@@ -3,21 +3,260 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Test Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Chatbot Demo - Interactive Customer Support</title>
   <link rel="stylesheet" href="https://erp-development.s3.ap-south-1.amazonaws.com/style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 0;
+      color: white;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .demo-section {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      margin: 30px 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .demo-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .demo-header h2 {
+      font-size: 2rem;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    .demo-description {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .feature-card {
+      background: #f8f9ff;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: #2c3e50;
+      transform: translateY(-5px);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .feature-card h3 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .chat-demo-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .instructions {
+      flex: 1;
+      min-width: 300px;
+      background: #f8f9ff;
+      padding: 30px;
+      border-radius: 15px;
+      border-left: 5px solid #2c3e50;
+    }
+
+    .instructions h3 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .instructions ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .instructions li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .instructions li:before {
+      content: "✓";
+      color: #2c3e50;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .chatbot-wrapper {
+      flex: 1;
+      min-width: 400px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #2c3e50;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: white;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .demo-section {
+        padding: 20px;
+        margin: 20px 0;
+      }
+      
+      .chat-demo-container {
+        flex-direction: column;
+      }
+      
+      .chatbot-wrapper {
+        min-width: auto;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="container">
+    <header>
+      <h1>AI Chatbot Demo</h1>
+      <p class="subtitle">Experience the future of customer support with our intelligent chatbot</p>
+    </header>
 
-  <h1>Hello! This is a test page12</h1>
-  <didv id="chat-container"></didv>
-  ⬇ Paste your widget script here
+    <div class="demo-section">
+      <div class="demo-header">
+        <div class="badge">Live Demo</div>
+        <h2>Interactive Chatbot Experience</h2>
+        <p class="demo-description">
+          Our AI-powered chatbot provides instant, intelligent responses to customer queries. 
+          Try it out below and experience seamless conversation flow with modern UI design.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>AI-Powered</h3>
+          <p>Advanced natural language processing for human-like conversations</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Response</h3>
+          <p>Real-time responses with minimal latency for better user experience</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Customizable Design</h3>
+          <p>Fully customizable colors, themes, and layout to match your brand</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Mobile Responsive</h3>
+          <p>Works perfectly across all devices and screen sizes</p>
+        </div>
+      </div>
+
+      <div class="chat-demo-container">
+        <div class="instructions">
+          <h3>Try the Demo</h3>
+          <ul>
+            <li>Click on the chat widget to start a conversation</li>
+            <li>Ask questions about products, services, or support</li>
+            <li>Experience the smooth, responsive interface</li>
+            <li>Notice the customizable design and colors</li>
+            <li>Test the mobile-responsive layout</li>
+          </ul>
+          <p style="margin-top: 20px; font-style: italic; color: #666;">
+            This chatbot integrates seamlessly into any website with just a few lines of code.
+          </p>
+        </div>
+        
+        <div class="chatbot-wrapper">
+          <div id="chat-container"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 AI Chatbot Demo. Showcasing intelligent customer support solutions.</p>
+  </footer>
+
   <script src="https://erp-development.s3.ap-south-1.amazonaws.com/chatbot.umd.js"></script>
   <script>
-    // Basic usage - no token required, uses defaults
-    // createChatWidget();
-
-    // Or with custom design
     createChatWidget({
       selector: '#chat-container',
       baseUrl: "https://chat.backend.sprintup.in",
@@ -33,7 +272,6 @@
       }
     });
   </script>
-
 </body>
 
 </html>
